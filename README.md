@@ -14,7 +14,7 @@ sh run.sh
 Open tester.c, and for example add this in main:
 ```c
 testing("My own test");
-test(printf("[%p]", ptr1), ft_printf("'%p'", ptr1));
+test(printf("[%s !!!]", "my test value"), ft_printf("'%s !!!'", "my test value"));
 ```
 
 ## Preview
