@@ -2,7 +2,7 @@
 
 path=../ft_printf
 libname=printf.a
-timer=0.15
+timer=0.1
 
 echo "\e[96mSetup starting..."
 sleep $timer
