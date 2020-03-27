@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   tester.c                                         .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: rolaforg <rolaforg@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/10 12:03:12 by rolaforg     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 13:46:02 by rolaforg    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tester.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rolaforg <rolaforg@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/10 12:03:12 by rolaforg          #+#    #+#             */
+/*   Updated: 2020/03/27 12:03:04 by rolaforg         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
@@ -130,5 +129,7 @@ int main(void)
 	test(printf("[%u]", two), ft_printf("'%u'", two));
 	test(printf("[%u, %u]", one, two), ft_printf("'%u, %u'", one, two));
 
+	// testing("%5s");
+	// test(printf("[%5s]", one), ft_printf("'%5s'", one));
 	return (0);
 }
