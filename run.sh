@@ -1,8 +1,8 @@
 #!/bin/bash
 
-path=../ft_printf
-libname=libftprintf.a
-timer=0.1
+path=../ft_printf # Your printf project dir
+libname=libftprintf.a # Your printf lib name
+timer=0 # Wait after each log 
 
 function log () {
     if [ "$2" = 'success' ]; then
@@ -17,43 +17,47 @@ function log () {
     sleep $timer
 }
 
-function part1 () {
-    log "Copying library to tester."
-    if cp $path/$libname printf.a ; then
-        log "Copy, done." "success"
-        part2
-    else
-        log "Copy, failed !" "error"
-    fi
-}
-
-function part2 () {
-    log "Compiling tester..."
-    if gcc tester.c printf.a -o tester ; then
+function compile_lib () {
+    log "Compiling your project..."
+    if make -C $path ; then
         log "Compiling, done." "success"
-        rm printf.a
-        part3
+        copy_lib
     else
         log "Compiling, failed !" "error"
     fi
 }
 
-function part3 () {
+function copy_lib () {
+    log "Copying library to tester."
+    if cp $path/$libname printf.a ; then
+        log "Copy, done." "success"
+        compile_tester
+    else
+        log "Copy, failed !" "error"
+    fi
+}
+
+function compile_tester () {
+    log "Compiling tester..."
+    if gcc -w tester.c printf.a -o tester ; then
+        log "Compiling, done." "success"
+        rm printf.a
+        start_tester
+    else
+        log "Compiling, failed !" "error"
+    fi
+}
+
+function start_tester () {
     log "Starting tester ..."
     if ./tester ; then
-        log "Done." "success"
+        log "Done. ✅" "success"
         rm tester
     else
-        log "END, tester failed, try again !" "error"
+        log "💥💥 END, tester failed, try again ! 💥💥" "error"
     fi
 }
 
 clear
 log "Setup starting..."
-log "Compiling your project..."
-if make -C $path ; then
-    log "Compiling, done." "success"
-    part1
-else
-    log "Compiling, failed !" "error"
-fi
+compile_lib
