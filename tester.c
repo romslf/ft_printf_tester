@@ -6,7 +6,7 @@
 /*   By: rolaforg <rolaforg@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 12:03:12 by rolaforg          #+#    #+#             */
-/*   Updated: 2020/03/28 18:39:37 by rolaforg         ###   ########lyon.fr   */
+/*   Updated: 2020/03/31 17:06:28 by rolaforg         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,16 @@ int main(void)
 	test(printf("[%u]", two), ft_printf("'%u'", two));
 	test(printf("[%u, %u]", one, two), ft_printf("'%u, %u'", one, two));
 
-	// testing("%5s");
-	// test(printf("[%5s]", one), ft_printf("'%5s'", one));
+	testing("%010s");
+	test(printf("[%10s]", ""), ft_printf("'%10s'", ""));
+	test(printf("[%10s]", "T"), ft_printf("'%10s'", "T"));
+	test(printf("[%10s]", "TestTest"), ft_printf("'%10s'", "TestTest"));
+	test(printf("[%10s]", "TestTestTestTestTestTest"), ft_printf("'%10s'", "TestTestTestTestTestTest"));
+
+	testing("%010s");
+	test(printf("[%010s]", ""), ft_printf("'%010s'", ""));
+	test(printf("[%010s]", "T"), ft_printf("'%010s'", "T"));
+	test(printf("[%010s]", "TestTest"), ft_printf("'%010s'", "TestTest"));
+	test(printf("[%010s]", "TestTestTestTestTestTest"), ft_printf("'%010s'", "TestTestTestTestTestTest"));
 	return (0);
 }

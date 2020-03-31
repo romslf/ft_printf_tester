@@ -52,12 +52,24 @@ function start_tester () {
     log "Starting tester ..."
     if ./tester ; then
         log "Done. ✅" "success"
-        rm tester
     else
         log "💥💥 END, tester failed, try again ! 💥💥" "error"
     fi
+    rm tester
+}
+
+function header () {
+    currentDate=`date`
+    echo " "
+    echo " "
+    echo " "
+    echo "#################################"
+    echo " " $currentDate
+    echo "#################################"
+    echo " "
+    log "Setup starting..."
 }
 
 clear
-log "Setup starting..."
+header
 compile_lib
