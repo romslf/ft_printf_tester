@@ -72,13 +72,13 @@ function header () {
 
 clear
 if [ "$1" != "" ] ; then
-    path=$1
+    path="$1"
 fi
 if [ "$2" != "" ] ; then
-    libname=$2
+    libname="$2"
 fi
-if [ "$3" != 0 ] ; then
-    timer=$3
+if [ "$3" != "" ] ; then
+    timer="$3"
 fi
 header
 compile_lib
