@@ -2,9 +2,9 @@
 A simple ft_printf project tester for 42 school
 
 ## How to use
-PATH = Your ft_printf project directory (Default: ../ft_printf)
-LIB = Your ft_printf library name (Default: libftprintf.a)
-TIMER = Time to wait after each setup log in seconds (Default: 0)
+- PATH = Your ft_printf project directory (Default: ../ft_printf)
+- LIB = Your ft_printf library name (Default: libftprintf.a)
+- TIMER = Time to wait after each setup log in seconds (Default: 0)
 ``` bash
 sh run.sh PATH LIB TIMER
 ```
