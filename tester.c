@@ -6,13 +6,13 @@
 /*   By: rolaforg <rolaforg@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 12:03:12 by rolaforg          #+#    #+#             */
-/*   Updated: 2020/03/31 17:06:28 by rolaforg         ###   ########lyon.fr   */
+/*   Updated: 2020/04/03 21:02:10 by rolaforg         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <string.h>
-#include "printf.h"
+#include <printf.h>
 
 int	ft_printf(const char *, ...);
 
@@ -28,9 +28,8 @@ void header(void)
 	printf("\033[0m");
 	printf("\n");
 	printf("\033[7;49m");
-	printf("Légende: ");
-	printf("\033[0m");
-	printf("[]: printf, '': ft_printf\n\n");
+	printf("Légende:\033[0m\n");
+	printf("ft_printf: '', printf: [] \n\n");
 
 }
 
@@ -46,7 +45,7 @@ void test(int one, int two)
 	else
 	{
 		size = sepSize - one - one - 4;
-		printf("%*s", size, "\033[0;31m FAIL \033[0m\n");
+		printf("\033[0;31m FAIL, expected: %d, returned: %d \033[0m \n", one, two);
 	}
 }
 
@@ -132,16 +131,67 @@ int main(void)
 	test(printf("[%u]", two), ft_printf("'%u'", two));
 	test(printf("[%u, %u]", one, two), ft_printf("'%u, %u'", one, two));
 
-	testing("%010s");
+	testing("%4d");
+	test(printf("[%4d]", 0), ft_printf("'%4d'", 0));
+	test(printf("[%4d]", 42), ft_printf("'%4d'", 42));
+	test(printf("[%4d]", 4222), ft_printf("'%4d'", 4222));
+	test(printf("[%4d]", 13377), ft_printf("'%4d'", 13377));
+
+	testing("%04d");
+	test(printf("[%04d]", 0), ft_printf("'%04d'", 0));
+	test(printf("[%04d]", 42), ft_printf("'%04d'", 42));
+	test(printf("[%04d]", 4222), ft_printf("'%04d'", 4222));
+	test(printf("[%04d]", 13377), ft_printf("'%04d'", 13377));
+
+	testing("%-4d");
+	test(printf("[%-4d]", 0), ft_printf("'%-4d'", 0));
+	test(printf("[%-4d]", 42), ft_printf("'%-4d'", 42));
+	test(printf("[%-4d]", 4222), ft_printf("'%-4d'", 4222));
+	test(printf("[%-4d]", 13377), ft_printf("'%-4d'", 13377));
+
+	testing("%*d (* = 4)");
+	test(printf("[%*d]", 4, 0), ft_printf("'%*d'", 4, 0));
+	test(printf("[%*d]", 4, 42), ft_printf("'%*d'", 4, 42));
+	test(printf("[%*d]", 4, 4222), ft_printf("'%*d'", 4, 4222));
+	test(printf("[%*d]", 4, 13377), ft_printf("'%*d'", 4, 13377));
+
+	testing("%10s");
 	test(printf("[%10s]", ""), ft_printf("'%10s'", ""));
 	test(printf("[%10s]", "T"), ft_printf("'%10s'", "T"));
 	test(printf("[%10s]", "TestTest"), ft_printf("'%10s'", "TestTest"));
-	test(printf("[%10s]", "TestTestTestTestTestTest"), ft_printf("'%10s'", "TestTestTestTestTestTest"));
+	test(printf("[%10s]", "TestTestTestTest"), ft_printf("'%10s'", "TestTestTestTest"));
 
 	testing("%010s");
 	test(printf("[%010s]", ""), ft_printf("'%010s'", ""));
 	test(printf("[%010s]", "T"), ft_printf("'%010s'", "T"));
 	test(printf("[%010s]", "TestTest"), ft_printf("'%010s'", "TestTest"));
-	test(printf("[%010s]", "TestTestTestTestTestTest"), ft_printf("'%010s'", "TestTestTestTestTestTest"));
+	test(printf("[%010s]", "TestTestTestTest"), ft_printf("'%010s'", "TestTestTestTest"));
+
+	testing("%-10s");
+	test(printf("[%-10s]", ""), ft_printf("'%-10s'", ""));
+	test(printf("[%-10s]", "T"), ft_printf("'%-10s'", "T"));
+	test(printf("[%-10s]", "TestTest"), ft_printf("'%-10s'", "TestTest"));
+	test(printf("[%-10s]", "TestTestTestTest"), ft_printf("'%-10s'", "TestTestTestTest"));
+
+	testing("%-010s");
+	test(printf("[%-010s]", ""), ft_printf("'%-010s'", ""));
+	test(printf("[%-010s]", "T"), ft_printf("'%-010s'", "T"));
+	test(printf("[%-010s]", "TestTest"), ft_printf("'%-010s'", "TestTest"));
+	test(printf("[%-010s]", "TestTestTestTest"), ft_printf("'%-010s'", "TestTestTestTest"));
+
+	testing("%*s (* = 10)");
+	test(printf("[%*s]", 10, " "), ft_printf("'%*s'", 10, " "));
+	test(printf("[%*s]", 10, "T"), ft_printf("'%*s'", 10, "T"));
+	test(printf("[%*s]", 10, "TestTest"), ft_printf("'%*s'", 10, "TestTest"));
+	test(printf("[%*s]", 10, "TestTestTestTest"), ft_printf("'%*s'", 10, "TestTestTestTest"));
+
+	testing("%.3d");
+	test(printf("[%.3d]", 1), ft_printf("'%.3d'", 1));
+	test(printf("[%.3d]", 11), ft_printf("'%.3d'", 11));
+	test(printf("[%.3d]", 111), ft_printf("'%.3d'", 111));
+
+	testing("Mix");
+	test(printf("[%10s, %010s, %-10s]", "Test", "test", "tst"), ft_printf("'%10s, %010s, %-10s'", "Test", "test", "tst"));
+
 	return (0);
 }
