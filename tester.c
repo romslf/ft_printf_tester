@@ -6,7 +6,7 @@
 /*   By: rolaforg <rolaforg@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 12:03:12 by rolaforg          #+#    #+#             */
-/*   Updated: 2020/04/03 21:02:10 by rolaforg         ###   ########lyon.fr   */
+/*   Updated: 2020/04/04 13:47:34 by rolaforg         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,14 @@ int main(void)
 	test(printf("[%u]", two), ft_printf("'%u'", two));
 	test(printf("[%u, %u]", one, two), ft_printf("'%u, %u'", one, two));
 
+	testing("%4-1c");
+	test(printf("[%4c]", '?'), ft_printf("'%4c'", '?'));
+	test(printf("[%3c]", '?'), ft_printf("'%3c'", '?'));
+	test(printf("[%2c]", '?'), ft_printf("'%2c'", '?'));
+	test(printf("[%1c]", '?'), ft_printf("'%1c'", '?'));
+	test(printf("[%0c]", '?'), ft_printf("'%0c'", '?'));
+	test(printf("[%1c]", 0), ft_printf("'%1c'", 0));
+
 	testing("%4d");
 	test(printf("[%4d]", 0), ft_printf("'%4d'", 0));
 	test(printf("[%4d]", 42), ft_printf("'%4d'", 42));
@@ -189,6 +197,45 @@ int main(void)
 	test(printf("[%.3d]", 1), ft_printf("'%.3d'", 1));
 	test(printf("[%.3d]", 11), ft_printf("'%.3d'", 11));
 	test(printf("[%.3d]", 111), ft_printf("'%.3d'", 111));
+
+	testing("%15p");
+	test(printf("[%15p]", NULL), ft_printf("[%15p]", NULL));
+	test(printf("[%15p]", ptr1), ft_printf("[%15p]", ptr1));
+	test(printf("[%15p]", ptr2), ft_printf("[%15p]", ptr2));
+
+	testing("%-15p");
+	test(printf("[%-15p]", NULL), ft_printf("[%-15p]", NULL));
+	test(printf("[%-15p]", ptr1), ft_printf("[%-15p]", ptr1));
+	test(printf("[%-15p]", ptr2), ft_printf("[%-15p]", ptr2));
+
+	testing("%015p");
+	test(printf("[%015p]", NULL), ft_printf("[%015p]", NULL));
+	test(printf("[%015p]", ptr1), ft_printf("[%015p]", ptr1));
+	test(printf("[%015p]", ptr2), ft_printf("[%015p]", ptr2));
+
+	testing("%5u");
+	test(printf("[%5u]", NULL), ft_printf("[%5u]", NULL));
+	test(printf("[%5u]", -42), ft_printf("[%5u]", -42));
+	test(printf("[%5u]", 4), ft_printf("[%5u]", 4));
+	test(printf("[%5u]", 42), ft_printf("[%5u]", 42));
+	test(printf("[%5u]", 422), ft_printf("[%5u]", 422));
+	test(printf("[%5u]", 42222), ft_printf("[%5u]", 42222));
+
+	testing("%-5u");
+	test(printf("[%-5u]", NULL), ft_printf("[%-5u]", NULL));
+	test(printf("[%-5u]", -42), ft_printf("[%-5u]", -42));
+	test(printf("[%-5u]", 4), ft_printf("[%-5u]", 4));
+	test(printf("[%-5u]", 42), ft_printf("[%-5u]", 42));
+	test(printf("[%-5u]", 422), ft_printf("[%-5u]", 422));
+	test(printf("[%-5u]", 42222), ft_printf("[%-5u]", 42222));
+	
+	testing("%05u");
+	test(printf("[%05u]", NULL), ft_printf("[%05u]", NULL));
+	test(printf("[%05u]", -42), ft_printf("[%05u]", -42));
+	test(printf("[%05u]", 4), ft_printf("[%05u]", 4));
+	test(printf("[%05u]", 42), ft_printf("[%05u]", 42));
+	test(printf("[%05u]", 422), ft_printf("[%05u]", 422));
+	test(printf("[%05u]", 42222), ft_printf("[%05u]", 42222));
 
 	testing("Mix");
 	test(printf("[%10s, %010s, %-10s]", "Test", "test", "tst"), ft_printf("'%10s, %010s, %-10s'", "Test", "test", "tst"));
