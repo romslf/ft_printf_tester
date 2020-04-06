@@ -39,7 +39,7 @@ function copy_lib () {
 
 function compile_tester () {
     log "Compiling tester..."
-    if gcc -w tester.c printf.a -o tester ; then
+    if gcc -w tester.c utils.c tester.h tests/* printf.a; then
         log "Compiling, done." "success"
         rm printf.a
         start_tester
@@ -50,12 +50,13 @@ function compile_tester () {
 
 function start_tester () {
     log "Starting tester ..."
-    if ./tester ; then
+    if ./a.out ; then
         log "Done. ✅" "success"
     else
         log "💥💥 END, tester failed, try again ! 💥💥" "error"
     fi
-    rm tester
+    rm a.out
+    rm tester.h.gch
 }
 
 function header () {

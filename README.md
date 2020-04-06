@@ -2,7 +2,7 @@
 
 A easy to use ft_printf project tester for 42 school.
 
-## Currently testing
+## Currently testing (+500 tests)
 
 %d, %i, %c, %s, %x, %X, %p, %u, and string only with the options "-0.*".
 
@@ -26,14 +26,36 @@ sh run.sh PATH LIB TIMER
 
 Default values can be edited in run.sh (From line 3 to 5).
 
-## Add test
+## Add tests
 
-Open tester.c, and for example add this in main:
+1. Create a new file in tests folder (ex: "my_own_test.c")
 
-```c
-testing("My own test"); // Only used as separotor for tests
-test(printf("[%s !!!]", "my test value"), ft_printf("'%s !!!'", "my test value")); // Real test
-```
+2. Add the below code in:
+
+    ```c
+    #include "../tester.h"
+
+    void    my_own_test(t_res *res)
+    {
+        testing("My own test"); // Only used as separotor for tests
+        test(res, printf("[%s !!!]", "my test value"), ft_printf("'%s !!!'", "my test value")); // Real test
+    }
+    ```
+
+3. Put yout prototype in tester.h (ex: void my_own_test(t_res *res);)
+
+4. Finnaly call your test in test.c > main:
+
+    ```c
+    #include "../tester.h"
+
+    void    main()
+    {
+        ...
+        my_own_test(res);
+        ...
+    }
+    ```
 
 Remark that you can use different char to enclose the string and therefore know which one produced each output. (ex: [] for printf and '' for your function)
 Feel free to open a pull request to add tests !
