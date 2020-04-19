@@ -6,7 +6,7 @@
 /*   By: rolaforg <rolaforg@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 19:20:51 by rolaforg          #+#    #+#             */
-/*   Updated: 2020/04/19 14:18:40 by rolaforg         ###   ########lyon.fr   */
+/*   Updated: 2020/04/19 14:19:49 by rolaforg         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void test(t_res *res, int one, int two)
 	}
 	else
 	{
-		size = sepSize - one - one;
+		size = sepSize - one - two;
 		printf(" \033[0;31m [FAIL]\033[0m expected: %d, returned: %d\n", one, two);
 		res->fail += 1;
 	}

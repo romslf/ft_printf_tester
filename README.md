@@ -44,7 +44,7 @@ Default values can be edited in run.sh (From line 3 to 5).
 
 3. Put yout prototype in tester.h (ex: void my_own_test(t_res *res);)
 
-4. Finnaly call your test in test.c > main:
+4. Finnaly call your test in tester.c > main:
 
     ```c
     #include "../tester.h"
