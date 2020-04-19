@@ -52,8 +52,6 @@ function start_tester () {
     log "Starting tester ..."
     if ./a.out ; then
         log "Done. ✅" "success"
-    else
-        log "💥💥 END, tester failed, try again ! 💥💥" "error"
     fi
     rm a.out
     rm tester.h.gch

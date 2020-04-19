@@ -6,7 +6,7 @@
 /*   By: rolaforg <rolaforg@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 19:20:51 by rolaforg          #+#    #+#             */
-/*   Updated: 2020/04/06 19:21:03 by rolaforg         ###   ########lyon.fr   */
+/*   Updated: 2020/04/19 14:15:27 by rolaforg         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,22 @@ void header(void)
 void test(t_res *res, int one, int two)
 {
 	int size = 0;
-	int sepSize = 102;
+	int sepSize = 45;
 	if (one == two)
 	{
 		size = sepSize - one - two;
-		printf("%*s", size, "\033[0;32m[OK]\033[0m\n");
+		printf("%*s", size, "\033[0;32m [OK]\033[0m\n");
 		res->ok += 1;
 	}
 	else
 	{
 		size = sepSize - one - one;
-		printf(" \033[0;31m[FAIL]\033[0m expected: %d, returned: %d\n", one, two);
+		printf(" \033[0;31m [FAIL]\033[0m expected: %d, returned: %d\n", one, two);
 		res->fail += 1;
 	}
 }
 
 void testing(char *str)
 {
-	printf("\033[4;95mTesting %s :\033[0m\n", str);
+	printf("\n \033[4;95mTesting %s :\033[0m\n", str);
 }

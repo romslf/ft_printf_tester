@@ -6,7 +6,7 @@
 /*   By: rolaforg <rolaforg@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 12:59:56 by rolaforg          #+#    #+#             */
-/*   Updated: 2020/04/06 19:21:55 by rolaforg         ###   ########lyon.fr   */
+/*   Updated: 2020/04/19 14:08:53 by rolaforg         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,4 @@ void	test_u(t_res *res);
 void	test_mix(t_res *res);
 void	test_mix_spaces(t_res *res);
 void	test_mix_options(t_res *res);
+void    test_percent(t_res *res);
